@@ -1,0 +1,17 @@
+{
+    "name": "arian/ariansani-plugin-test",
+    "description": "Awesome starter plugin example",
+    "type": "project",
+    "license": "GPL",
+    "authors":[
+        {
+            "name":"Arian",
+            "email": "ariansani@hotmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4":{"Inc\\":"./inc"}
+    }
+}
