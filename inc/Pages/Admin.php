@@ -29,7 +29,12 @@ use \Inc\Api\Callbacks\AdminCallbacks;
 
       $this->setSubPages();
 
-      $this->settings->addPages($this->pages)->withSubPage( 'Dashboard' )->addSubPages($this->subpages)->register();
+      $this->setSettings();
+      $this->setSections();
+      $this->setFields();
+
+      $this->settings->addPages($this->pages)->withSubPage( 'Dashboard' )->addSubPages($this->subpages)
+      ->register();
     }
 
     public function setPages(){
@@ -72,6 +77,51 @@ use \Inc\Api\Callbacks\AdminCallbacks;
           'callback'=> array($this->callbacks,'adminWidget')
       )
       );
+    }
+
+    public function setSettings(){
+      $args = array(
+        array(
+          'option_group' => 'ariansani_options_group',
+          'option_name' => 'text_example',
+          'callback' => array($this->callbacks,'ariansaniOptionsGroup')
+        )
+        
+      );
+      $this->settings->setSettings($args);
+    }
+
+    public function setSections(){
+      $args = array(
+        array(
+          'id' => 'ariansani_admin_index',
+          'title' => 'Settings',
+          'callback' => array($this->callbacks,'ariansaniAdminSection'),
+          'page' => 'ariansani_plugin'
+
+        )
+        
+      );
+      $this->settings->setSections($args);
+    }
+
+    public function setFields(){
+      $args = array(
+        array(
+          'id' => 'text_example',
+          'title' => 'Text Example',
+          'callback' => array($this->callbacks,'ariansaniTextExample'),
+          'page' => 'ariansani_plugin',
+          'section' => 'ariansani_admin_index',
+          'args' => array(
+            'label_for' => 'text_example',
+            'class' => 'example-class'
+
+          )
+        )
+        
+      );
+      $this->settings->setFields($args);
     }
 
   }
