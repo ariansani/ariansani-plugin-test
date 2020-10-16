@@ -54,7 +54,7 @@ use \Inc\Api\Callbacks\AdminCallbacks;
             'menu_title'=> 'CPT',
             'capability'=> 'manage_options', 
             'menu_slug'=> 'ariansani_cpt',
-            'callback'=> function(){echo '<h1>CPT Manager</h1>';}
+            'callback'=> array($this->callbacks,'adminCpt')
         ),
         array(
           'parent_slug'=> 'ariansani_plugin',
@@ -62,14 +62,14 @@ use \Inc\Api\Callbacks\AdminCallbacks;
           'menu_title'=> 'Taxonomies',
           'capability'=> 'manage_options', 
           'menu_slug'=> 'ariansani_taxonomies',
-          'callback'=> function(){echo '<h1>Taxonomies Manager</h1>';}
+          'callback'=> array($this->callbacks,'adminTaxonomy')
         ),array(
           'parent_slug'=> 'ariansani_plugin',
           'page_title'=> 'Custom Widgets',
           'menu_title'=> 'Widgets',
           'capability'=> 'manage_options', 
           'menu_slug'=> 'ariansani_widgets',
-          'callback'=> function(){echo '<h1>Widgets Manager</h1>';}
+          'callback'=> array($this->callbacks,'adminWidget')
       )
       );
     }
