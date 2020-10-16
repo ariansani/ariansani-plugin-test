@@ -85,7 +85,11 @@ use \Inc\Api\Callbacks\AdminCallbacks;
           'option_group' => 'ariansani_options_group',
           'option_name' => 'text_example',
           'callback' => array($this->callbacks,'ariansaniOptionsGroup')
-        )
+        ),
+        array(
+          'option_group' => 'ariansani_options_group',
+          'option_name' => 'first_name'
+          )
         
       );
       $this->settings->setSettings($args);
@@ -118,6 +122,18 @@ use \Inc\Api\Callbacks\AdminCallbacks;
             'class' => 'example-class'
 
           )
+        ),
+          array(
+            'id' => 'first_name',
+            'title' => 'First Name',
+            'callback' => array($this->callbacks,'ariansaniFirstName'),
+            'page' => 'ariansani_plugin',
+            'section' => 'ariansani_admin_index',
+            'args' => array(
+              'label_for' => 'first_name',
+              'class' => 'example-class'
+  
+            )
         )
         
       );
