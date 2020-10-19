@@ -84,15 +84,23 @@ use \Inc\Api\Callbacks\ManagerCallbacks;
     }
 
     public function setSettings(){
-      $args = array();
+      $args = array(
+        array(
+          'option_group' => 'ariansani_plugin_settings',
+          'option_name' => 'ariansani_plugin',
+          'callback' => array($this->callbacks_mngr,'checkboxSanitize')
+        )
+      );
 
-      foreach($this->managers as $key=>$value){
-        $args[]=array(
-              'option_group' => 'ariansani_plugin_settings',
-              'option_name' => $key,
-              'callback' => array($this->callbacks_mngr,'checkboxSanitize')
-        );
-      }
+      
+
+      // foreach($this->managers as $key=>$value){
+      //   $args[]=array(
+      //         'option_group' => 'ariansani_plugin_settings',
+      //         'option_name' => 'ariansani_plugin',
+      //         'callback' => array($this->callbacks_mngr,'checkboxSanitize')
+      //   );
+      // }
      
       $this->settings->setSettings($args);
     }
@@ -120,6 +128,7 @@ use \Inc\Api\Callbacks\ManagerCallbacks;
           'page' => 'ariansani_plugin',
           'section' => 'ariansani_admin_index',
           'args' => array(
+            'option_name'=> 'ariansani_plugin',
             'label_for' => $key,
             'class' => 'ui-toggle'
 
