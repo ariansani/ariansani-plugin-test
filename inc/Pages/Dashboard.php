@@ -91,16 +91,6 @@ use \Inc\Api\Callbacks\ManagerCallbacks;
           'callback' => array($this->callbacks_mngr,'checkboxSanitize')
         )
       );
-
-      
-
-      // foreach($this->managers as $key=>$value){
-      //   $args[]=array(
-      //         'option_group' => 'ariansani_plugin_settings',
-      //         'option_name' => 'ariansani_plugin',
-      //         'callback' => array($this->callbacks_mngr,'checkboxSanitize')
-      //   );
-      // }
      
       $this->settings->setSettings($args);
     }
@@ -120,6 +110,9 @@ use \Inc\Api\Callbacks\ManagerCallbacks;
     }
 
     public function setFields(){
+
+      $args = array();
+
       foreach($this->managers as $key=>$value){
         $args[]=array(
           'id' => $key,
