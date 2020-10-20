@@ -11,11 +11,18 @@ namespace Inc;
       */
      public static function get_services(){
         return [
-            
             Pages\Dashboard::class,
-            Base\Enqueue::class,
-            Base\SettingsLinks::class,
-            Base\CustomPostTypeController::class
+			Base\Enqueue::class,
+			Base\SettingsLinks::class,
+			Base\CustomPostTypeController::class,
+			Base\CustomTaxonomyController::class,
+			Base\WidgetController::class,
+			Base\GalleryController::class,
+			Base\TestimonialController::class,
+			Base\TemplateController::class,
+			Base\AuthController::class,
+			Base\MembershipController::class,
+			Base\ChatController::class,
         ];
      }
 /**
