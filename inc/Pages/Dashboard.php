@@ -9,7 +9,7 @@ use \Inc\Api\SettingsApi;
 use \Inc\Api\Callbacks\AdminCallbacks;
 use \Inc\Api\Callbacks\ManagerCallbacks;
 
-  class Admin extends BaseController{
+  class Dashboard extends BaseController{
 
     public $settings;
 
@@ -18,7 +18,7 @@ use \Inc\Api\Callbacks\ManagerCallbacks;
     
     public $pages = array();
 
-    public $subpages = array();
+    //public $subpages = array();
 
 
     public function register(){
@@ -31,13 +31,13 @@ use \Inc\Api\Callbacks\ManagerCallbacks;
 
       $this->setPages();
 
-      $this->setSubPages();
+      //$this->setSubPages();
 
       $this->setSettings();
       $this->setSections();
       $this->setFields();
 
-      $this->settings->addPages($this->pages)->withSubPage( 'Dashboard' )->addSubPages($this->subpages)
+      $this->settings->addPages($this->pages)->withSubPage( 'Dashboard' )
       ->register();
     }
 
@@ -55,33 +55,33 @@ use \Inc\Api\Callbacks\ManagerCallbacks;
       );
     }
 
-    public function setSubpages(){
-      $this->subpages =  array(
-        array(
-            'parent_slug'=> 'ariansani_plugin',
-            'page_title'=> 'Custom Post Types',
-            'menu_title'=> 'CPT',
-            'capability'=> 'manage_options', 
-            'menu_slug'=> 'ariansani_cpt',
-            'callback'=> array($this->callbacks,'adminCpt')
-        ),
-        array(
-          'parent_slug'=> 'ariansani_plugin',
-          'page_title'=> 'Custom Taxonomies',
-          'menu_title'=> 'Taxonomies',
-          'capability'=> 'manage_options', 
-          'menu_slug'=> 'ariansani_taxonomies',
-          'callback'=> array($this->callbacks,'adminTaxonomy')
-        ),array(
-          'parent_slug'=> 'ariansani_plugin',
-          'page_title'=> 'Custom Widgets',
-          'menu_title'=> 'Widgets',
-          'capability'=> 'manage_options', 
-          'menu_slug'=> 'ariansani_widgets',
-          'callback'=> array($this->callbacks,'adminWidget')
-      )
-      );
-    }
+    // public function setSubpages(){
+    //   $this->subpages =  array(
+    //     array(
+    //         'parent_slug'=> 'ariansani_plugin',
+    //         'page_title'=> 'Custom Post Types',
+    //         'menu_title'=> 'CPT',
+    //         'capability'=> 'manage_options', 
+    //         'menu_slug'=> 'ariansani_cpt',
+    //         'callback'=> array($this->callbacks,'adminCpt')
+    //     ),
+    //     array(
+    //       'parent_slug'=> 'ariansani_plugin',
+    //       'page_title'=> 'Custom Taxonomies',
+    //       'menu_title'=> 'Taxonomies',
+    //       'capability'=> 'manage_options', 
+    //       'menu_slug'=> 'ariansani_taxonomies',
+    //       'callback'=> array($this->callbacks,'adminTaxonomy')
+    //     ),array(
+    //       'parent_slug'=> 'ariansani_plugin',
+    //       'page_title'=> 'Custom Widgets',
+    //       'menu_title'=> 'Widgets',
+    //       'capability'=> 'manage_options', 
+    //       'menu_slug'=> 'ariansani_widgets',
+    //       'callback'=> array($this->callbacks,'adminWidget')
+    //   )
+    //   );
+    // }
 
     public function setSettings(){
       $args = array(
